@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-h2oiel*_nobe@l7um@46ee=d1so@!p(4gj@@y7peyq@+cl-w%s
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['0.0.0.0:8000', '127.0.0.1']
 
 
 # Application definition
@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'plants',
     'rest_framework',
     'corsheaders',
+    'reportlab'
 ]
 
 MIDDLEWARE = [
@@ -140,9 +141,8 @@ STATIC_URL = '/static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ORIGIN_WHITELIST = [
-    'http://localhost:3004',
+    'http://localhost:3000',
 ]
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_URL = '/media/'
-
+MEDIA_URL = "/media/"
+MEDIA_ROOT=os.path.join(BASE_DIR,"media/")

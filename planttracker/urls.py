@@ -11,10 +11,15 @@ router.register(r'plants', views.TodoView, 'plants')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', views.TodoView.as_view()),
-    path('getlist/', views.PlantView.as_view({'get': 'list'})),
-    path('poststatus/', views.StatusSerializer.as_view()),
-     path('delete/', views.DeleteSerializer.as_view()),
+    path('api/plants', views.TodoView.as_view(), name="plants"),
+    path('api/plants/<id>', views.PlantId.as_view()),
+    path('api/tasks', views.PlantTask.as_view(), name="planttask"),
+    path('api/tasks/<id>/done', views.TaskDone),
+    path('api/tasks/<id>', views.TaskId.as_view(), name="tasks_id"),
+    path('api/plants/<id>/image', views.ImageUpload),
+    path('api/plants/<id>/pdf', views.pdfexport)
 ]
 
-urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+if settings.DEBUG:
+        urlpatterns += static(settings.MEDIA_URL,
+                              document_root=settings.MEDIA_ROOT)
